@@ -1,0 +1,32 @@
+﻿@model SIMS_Demo.Models.Course
+@{
+    ViewBag.Title = "New Course";
+}
+
+@using (Html.BeginForm("NewCourse", "Course", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Subject)
+        @Html.TextBoxFor(m => m.Subject, new { placeholder = "Course Name", Class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Time)
+        @Html.TextBoxFor(m => m.Time, new { placeholder = "Course Name", Class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Slot)
+        @Html.TextBoxFor(m => m.Slot, new { placeholder = "Course Name", Class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.RoomNumber)
+        @Html.TextBoxFor(m => m.RoomNumber, new { placeholder = "Room Number", Class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Teacher)
+        @Html.TextBoxFor(m => m.Teacher, new { placeholder = "Time", Class = "form-control" })
+    </div>
+
+    <input type="submit" value="Create" class="btn btn-success" />
+}

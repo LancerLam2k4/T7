@@ -1,0 +1,27 @@
+﻿@model SIMS_Demo.Models.TimetableEntry
+
+@{
+    ViewData["Title"] = "Timetable Entry Detail";
+}
+
+<div class="container mt-6">
+    <h1>Timetable Entry Detail</h1>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">@Model.CourseName</h5>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Date:</strong> @Model.Date.ToString("dddd dd/MM/yyyy")</li>
+                <li class="list-group-item"><strong>Slot:</strong> @Model.Slot</li>
+                <li class="list-group-item"><strong>Student Group:</strong> @Model.StudentGroup</li>
+                <li class="list-group-item"><strong>Instructor:</strong> @Model.Instructor</li>
+                <li class="list-group-item"><strong>Session Number:</strong> @Model.SessionNumber</li>
+                <li class="list-group-item"><strong>Campus/Programme:</strong> @Model.CampusProgramme</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="mt-4 text-end">
+        <a class="btn btn-primary" asp-action="Index">Back to Timetable</a>
+    </div>
+</div>

@@ -25,7 +25,7 @@ namespace SIMS_Demo.Controllers
                 HttpContext.Session.SetString("Name",result.Name);
                 if (result.Role == "Admin")
                 {
-                    return RedirectToAction("Index", "HomeAdmin");
+                    return RedirectToAction("Index", "HomeAdmin", new { userName = result.Name });
                 }
                 else if (result.Role == "Student")
                 {

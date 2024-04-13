@@ -25,17 +25,17 @@ namespace SIMS_Demo.Controllers
                 HttpContext.Session.SetString("Name",result.Name);
                 if (result.Role == "Admin")
                 {
-                    return RedirectToAction("Index", "HomeAdmin", new { userName = result.Name });
+                    return RedirectToAction("Index", "HomeAdmin", new { userName = result.Name, userRole = result.Role });
                 }
                 else if (result.Role == "Student")
                 {
                     // Chuyển hướng đến trang phù hợp cho vai trò "Student" (nếu cần)
-                    return RedirectToAction("Index", "HomeStudent",new { userName = result.Name });
+                    return RedirectToAction("Index", "HomeStudent",new { userName = result.Name,userRole = result.Role });
                 }
                 else if (result.Role == "Teacher")
                 {
                     // Chuyển hướng đến trang phù hợp cho vai trò "Student" (nếu cần)
-                    return RedirectToAction("Index", "Teacher", new { userName = result.Name });
+                    return RedirectToAction("Index", "Teacher", new { userName = result.Name, userRole = result.Role });
                 }
                 else
                 {
@@ -105,10 +105,10 @@ namespace SIMS_Demo.Controllers
             System.IO.File.WriteAllText(filePath, jsonData);
         }
         public static void UpdateFileFromListData(string filePath, List<User> users)
-{
-    string jsonData = JsonSerializer.Serialize(users);
-    System.IO.File.WriteAllText(filePath, jsonData);
-}
+        {
+              string jsonData = JsonSerializer.Serialize(users);
+              System.IO.File.WriteAllText(filePath, jsonData);
+        }
 
 
     }

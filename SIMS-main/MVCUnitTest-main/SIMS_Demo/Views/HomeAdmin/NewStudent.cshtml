@@ -1,17 +1,16 @@
 ﻿@model SIMS_Demo.Models.User
 @{
     Layout = "Layout_Admin";
+    string userName = ViewBag.UserName;
+    string userRole = ViewBag.Role;
 }
-
-<h1>Edit User</h1>
-
+<h1 style="text-align:center">Add New Student Dashboard</h1>
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            @using (Html.BeginForm("Edit", "HomeAdmin", FormMethod.Post))
+            @using (Html.BeginForm("NewStudent", "HomeAdmin", FormMethod.Post))
             {
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <input type="hidden" asp-for="Id" />
 
                 <div class="form-group">
                     <label asp-for="Name" class="control-label"></label>
@@ -32,6 +31,12 @@
                 </div>
 
                 <div class="form-group">
+                    <label asp-for="Major" class="control-label"></label>
+                    <input asp-for="Major" class="form-control" />
+                    <span asp-validation-for="Major" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
                     <label asp-for="Core" class="control-label"></label>
                     <input asp-for="Core" class="form-control" />
                     <span asp-validation-for="Core" class="text-danger"></span>
@@ -47,22 +52,11 @@
                 </div>
 
                 <div class="form-group">
-                    <label asp-for="Class" class="control-label"></label>
-                    <input asp-for="Class" class="form-control" />
-                    <span asp-validation-for="Class" class="text-danger"></span>
-                </div>
-
-                <div class="form-group">
-                    <label asp-for="Major" class="control-label"></label>
-                    <input asp-for="Major" class="form-control" />
-                    <span asp-validation-for="Major" class="text-danger"></span>
-                </div>
-
-                <div class="form-group">
                     <label asp-for="Password" class="control-label"></label>
                     <input asp-for="Password" class="form-control" />
                     <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
+
                 <div class="form-group">
                     <label asp-for="Role" class="control-label"></label>
                     <select asp-for="Role" class="form-control">
@@ -70,18 +64,11 @@
                     </select>
                     <span asp-validation-for="Role" class="text-danger"></span>
                 </div>
+
                 <div class="form-group">
-                    <input type="submit" value="Save" class="btn btn-primary" />
-                    <button type="button" class="btn btn-secondary" id="btnCancel">Cancel</button>
+                    <input type="submit" value="Add" class="btn btn-primary" />
                 </div>
             }
         </div>
     </div>
 </div>
-@section scripts {
-    <script>
-        document.getElementById("btnCancel").addEventListener("click", function () {
-            window.location.href = "@Url.Action("Index", "HomeAdmin")";
-        });
-    </script>
-}

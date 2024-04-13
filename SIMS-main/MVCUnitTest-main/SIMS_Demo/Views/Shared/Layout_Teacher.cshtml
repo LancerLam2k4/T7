@@ -20,6 +20,11 @@
             overflow-y: auto; /* Allow vertical scrolling */
         }
 
+        .container {
+            width: calc(100% - 200px);
+            margin-left: 200px;
+        }
+
         .sidebar-heading {
             padding: 0.875rem 1.25rem;
             font-size: 1.2rem;
@@ -50,18 +55,16 @@
             padding: 0 15px; /* Add padding to maintain spacing */
         }
 
-        /* Adjust main content to account for fixed sidebar and navbar */
-        .container {
-            margin-top: 56px; /* Height of the navbar */
-            margin-left: 200px; /* Width of the sidebar */
-            padding-top: 1rem; /* Add some spacing */
-        }
-
-        /* Ensure footer is at the bottom */
+        /* Custom CSS for footer */
         .footer {
-            width: calc(100% - 200px);
-            
+            position: fixed;
             bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-top: 1px solid #dee2e6;
+            z-index: 1020; /* Ensure footer stays above other content */
         }
 
         /* Custom CSS for avatar */
@@ -105,16 +108,13 @@
         <div class="sidebar-heading">Menu</div>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" asp-action="Login" asp-controller="Authentication">Login</a>
+                <a class="nav-link" asp-action="Index" asp-controller="Teacher">ListCore</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Core</a>
+                <a class="nav-link" asp-action="ListTeacher" asp-controller="HomeAdmin">Teacher Managment</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Option 3</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Option 4</a>
+                <a class="nav-link" asp-action="ListCourse" asp-controller="HomeAdmin">Cource Managament</a>
             </li>
         </ul>
     </div>
@@ -134,12 +134,12 @@
     <div class="container">
         @RenderBody()
     </div>
-
     <footer class="border-top footer text-muted mt-5">
-        <div class="container">
-            &copy; 2024 - SIMS_Demo - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        <div class="container d-flex justify-content-center">
+            <div>&copy; 2024 - SIMS_Demo - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a></div>
         </div>
     </footer>
+
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

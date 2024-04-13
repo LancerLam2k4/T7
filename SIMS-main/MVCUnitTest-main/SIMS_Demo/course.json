@@ -1,18 +1,1 @@
-[
-  {
-    "Id": 3,
-    "Subject": "IT",
-    "Time": "2024-04-01T00:00:00",
-    "Slot": "4",
-    "RoomNumber": "D408",
-    "Teacher": "dong"
-  },
-  {
-    "Id": 4,
-    "Subject": "BSP",
-    "Time": "2024-04-02T00:00:00",
-    "Slot": "3",
-    "RoomNumber": "D404",
-    "Teacher": "dong"
-  }
-]
+[{"Id":3,"Subject":"IT","Time":"2024-04-01T00:00:00","Slot":"4","RoomNumber":"D409","Teacher":"dong"}]

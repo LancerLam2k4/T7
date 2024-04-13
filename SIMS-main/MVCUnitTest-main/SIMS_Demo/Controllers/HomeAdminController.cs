@@ -49,8 +49,13 @@ namespace SIMS_Demo.Controllers
                     userToEdit.Name = editedUser.Name;
                     userToEdit.DoB = editedUser.DoB;
                     userToEdit.Email = editedUser.Email;
-                    userToEdit.Core = editedUser.Core;
-                    userToEdit.Status = editedUser.Status;
+
+                    // Kiểm tra giá trị Core từ form, nếu null thì sử dụng giá trị hiện tại của userToEdit
+                    userToEdit.Core = editedUser.Core ?? userToEdit.Core;
+
+                    // Kiểm tra giá trị Status từ form, nếu null thì sử dụng giá trị hiện tại của userToEdit
+                    userToEdit.Status = editedUser.Status ?? userToEdit.Status;
+
                     userToEdit.Class = editedUser.Class;
                     userToEdit.Major = editedUser.Major;
                     userToEdit.Password = editedUser.Password;
@@ -74,6 +79,7 @@ namespace SIMS_Demo.Controllers
                 return View(editedUser);
             }
         }
+
         public void WriteUserListToFile(List<User> users, string filePath)
         {
             // Chuyển danh sách người dùng thành chuỗi JSON
@@ -412,6 +418,36 @@ namespace SIMS_Demo.Controllers
             ViewBag.Teachers = teachers;
             return View();
         }
+        [HttpPost]
+        public IActionResult NewCourse(Course newCourse)
+        {
+            if (ModelState.IsValid)
+            {
+                // Đọc danh sách khóa học từ tệp course.json
+                List<Course> courses = ReadFileToCourseList("course.json");
+
+                // Tạo ID cho khóa học mới (ví dụ: tìm ID lớn nhất trong danh sách và tăng lên 1)
+                int newCourseId = courses.Count > 0 ? courses.Max(c => c.Id) + 1 : 1;
+
+                // Gán ID cho khóa học mới
+                newCourse.Id = newCourseId;
+
+                // Thêm khóa học mới vào danh sách
+                courses.Add(newCourse);
+
+                // Ghi danh sách khóa học đã cập nhật vào tệp course.json
+                WriteCourseListToFile(courses, "course.json");
+
+                // Chuyển hướng sau khi thêm khóa học thành công (ví dụ: về trang danh sách khóa học)
+                return RedirectToAction("ListCourse");
+            }
+            else
+            {
+                // Trả về view NewCourse với model chưa hợp lệ nếu ModelState không hợp lệ
+                return View(newCourse);
+            }
+        }
+
 
 
     }

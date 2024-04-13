@@ -28,40 +28,32 @@ namespace SIMS_Demo.Controllers
             return View(userToEdit);
         }
         [HttpPost]
-        public IActionResult Edit(User editedUser)
+        public IActionResult Edit(User model)
         {
-            // Khởi tạo danh sách std nếu chưa có
-            if (std == null)
+            // Đọc dữ liệu từ file data.json
+            string jsonData = System.IO.File.ReadAllText("data.json");
+            var users = JsonSerializer.Deserialize<User[]>(jsonData);
+
+            // Tìm user trong mảng users dựa trên Id
+            var existingUser = Array.Find(users, u => u.Id == model.Id);
+
+            if (existingUser != null)
             {
-                std = ReadFileToTeacherList("data.json");
-            }
+                // Chỉ cập nhật trường Core và Status
+                existingUser.Core = model.Core;
+                existingUser.Status = model.Status;
 
-            if (ModelState.IsValid)
-            {
-                // Tìm và cập nhật thông tin người dùng trong danh sách std
-                var userToEdit = std.FirstOrDefault(u => u.Id == editedUser.Id);
+                // Lưu dữ liệu đã thay đổi vào file data.json
+                string updatedJsonData = JsonSerializer.Serialize(users);
+                System.IO.File.WriteAllText("data.json", updatedJsonData);
 
-                if (userToEdit != null)
-                {
-                    userToEdit.Core = editedUser.Core;
-                    userToEdit.Status = editedUser.Status;
-
-                    // Ghi danh sách std đã cập nhật vào tệp data.json
-                    WriteUserListToFile(std, "data.json");
-
-                    // Chuyển hướng đến trang Index sau khi cập nhật thành công
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    // Trả về lỗi nếu không tìm thấy người dùng
-                    return NotFound();
-                }
+                // Chuyển hướng về trang thành công hoặc trang khác tùy theo nhu cầu của bạn
+                return RedirectToAction("Index");
             }
             else
             {
-                // Trả về view chỉnh sửa với thông báo lỗi nếu ModelState không hợp lệ
-                return View(editedUser);
+                // Xử lý khi không tìm thấy người dùng
+                return RedirectToAction("Error");
             }
         }
 

@@ -6,7 +6,7 @@
 
 <h1>New Course</h1>
 
-@using (Html.BeginForm("NewCourse", "HomeAdminController", FormMethod.Post))
+@using (Html.BeginForm("NewCourse", "HomeAdmin", FormMethod.Post))
 {
     <div class="form-group">
         @Html.LabelFor(model => model.Subject, htmlAttributes: new { @class = "control-label" })

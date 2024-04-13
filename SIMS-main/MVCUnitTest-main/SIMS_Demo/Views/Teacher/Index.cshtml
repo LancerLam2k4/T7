@@ -18,7 +18,7 @@
             <th>Action</th>
         </tr>
     </thead>
-    @foreach (var item in Model)
+    @foreach (var item in Model.Where(u => u.Role =="Student"))
     {
         <tr>
             <td>@item.Id</td>
@@ -36,9 +36,6 @@
     }
 </table>
 
-<ul>
-    <li><a asp-controller="Teacher" asp-action="NewTeacher">New Teacher</a></li>
-</ul>
 
 
 

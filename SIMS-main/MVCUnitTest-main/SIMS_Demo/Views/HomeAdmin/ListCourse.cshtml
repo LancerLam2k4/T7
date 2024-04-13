@@ -1,0 +1,52 @@
+﻿@model IEnumerable<SIMS_Demo.Models.Course>
+@{
+    Layout = "Layout_Admin";
+}
+<style>
+    h1 {
+        text-align: center;
+    }
+
+    .btn-container {
+        display: flex;
+        justify-content: flex-end; /* Căn phải nút */
+        margin-bottom: 15px; /* Khoảng cách dưới của nút */
+    }
+</style>
+<h1>Admin Dashboard</h1>
+<p>Welcome Back ,Admin</p>
+<p>You are allowed to participate in student management such as: Add, Edit, Delete and Update Course Data</p>
+
+<div class="btn-container">
+    <!-- Nút thêm học sinh -->
+    <a class="btn btn-sm btn-success" href="@Url.Action("NewCourse","HomeAdmin")">Add New Course</a>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Subject</th>
+            <th>Time</th>
+            <th>Slot</th>
+            <th>RoomNumber</th>
+            <th>Homeroom Teacher</th> 
+            <th>Action</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Subject</td>
+            <td>@item.Time.ToShortTimeString() - @item.Time.ToShortDateString()</td>
+            <td>@item.Slot</td>
+            <td>@item.RoomNumber</td>
+            <td>@item.Teacher</td>
+            <td>
+                <a class="btn btn-sm btn-primary" href="@Url.Action("EditCourse","HomeAdmin",new {id=item.Id})">Edit</a>
+                <a class="btn btn-sm btn-primary" href="@Url.Action("DeleteCourse","HomeAdmin",new {id=item.Id})">Delete</a>
+            </td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Student>
+<h1>Student </h1>
+
+<p>Hello @ViewBag.UserName , you are @ViewBag.UserRole</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Dob</th>
+            <th>Email</th>
+            <th>StudentID</th>
+            <th>Class</th>
+            <th>Major</th>
+           
+            
+            <th>Action</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name </td>
+            <td>@item.DoB</td>
+            <td>@item.Email</td>
+            <td>@item.StudentID</td>
+            <td>@item.Class</td>
+            <td>@item.Major</td>
+           
+            <td>
+                
+                <a class="btn btn-sm btn-primary"
+                   href="@Url.Action("Edit","Student",new {id=item.Id})">Edit</a>
+                <a class="btn btn-sm btn-primary"
+                   href="@Url.Action("Delete","Student",new {id=item.Id})">Delete</a>
+                <a class="btn btn-sm btn-primary"
+                   href="@Url.Action("Detail","Student",new {id=item.Id})">Detail</a>
+
+            </td>
+        </tr>
+    }
+</table>
+
+<ul>
+    <li><a asp-controller="Student" asp-action="NewStudent">New Student</a></li>
+</ul>

@@ -1,0 +1,26 @@
+﻿@model SIMS_Demo.Models.Student
+
+@{
+    ViewData["Title"] = "Student Detail";
+}
+
+<div class="container mt-6">
+    <h1>Student Detail</h1>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">@Model.Name</h5>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Student ID:</strong> @Model.StudentID</li>
+                <li class="list-group-item"><strong>Class:</strong> @Model.Class</li>
+                <li class="list-group-item"><strong>Major:</strong> @Model.Major</li>
+                <li class="list-group-item"><strong>Email:</strong> @Model.Email</li>
+                <li class="list-group-item"><strong>Date of Birth:</strong> @Model.DoB.ToShortDateString()</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="mt-4 text-end">
+        <a class="btn btn-primary" asp-action="Index">Back to List</a>
+    </div>
+</div>

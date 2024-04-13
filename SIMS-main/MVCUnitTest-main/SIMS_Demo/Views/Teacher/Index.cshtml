@@ -1,0 +1,41 @@
+﻿@model IEnumerable<SIMS_Demo.Models.User>
+@{
+    Layout = "Layout_Teacher";
+}
+<h1>Teacher</h1>
+
+<p>Hello @ViewBag.UserName , you are @ViewBag.UserRole</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Major</th>
+            <th>Core</th>
+            <th>Status</th>
+            
+            <th>Action</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model.Where(u => u.Role =="Student"))
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name </td>
+            <td>@item.Email</td>
+            <td>@item.Major</td>
+            <td>@item.Core</td>
+            <td>@item.Status</td>
+           
+            <td>
+                <a class="btn btn-sm btn-primary"
+                   href="@Url.Action("Edit","Teacher",new {id=item.Id})">Edit</a>
+            </td>
+        </tr>
+    }
+</table>
+
+
+
+

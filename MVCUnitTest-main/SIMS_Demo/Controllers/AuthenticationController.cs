@@ -23,14 +23,19 @@ namespace SIMS_Demo.Controllers
                 HttpContext.Session.SetString("Email", result.Email);
                 HttpContext.Session.SetString("Role", result.Role);
                 HttpContext.Session.SetString("Name",result.Name);
-                if (result.Role == "Teacher")
+                if (result.Role == "Admin")
                 {
-                    return RedirectToAction("Index", "Teacher");
+                    return RedirectToAction("Index", "HomeAdmin");
                 }
                 else if (result.Role == "Student")
                 {
                     // Chuyển hướng đến trang phù hợp cho vai trò "Student" (nếu cần)
                     return RedirectToAction("Index", "HomeStudent",new { userName = result.Name });
+                }
+                else if (result.Role == "Teacher")
+                {
+                    // Chuyển hướng đến trang phù hợp cho vai trò "Student" (nếu cần)
+                    return RedirectToAction("Index", "Teacher", new { userName = result.Name });
                 }
                 else
                 {

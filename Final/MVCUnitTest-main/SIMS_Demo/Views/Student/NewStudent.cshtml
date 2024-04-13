@@ -1,0 +1,35 @@
+﻿@model Student
+
+@using (Html.BeginForm("NewStudent", "Student", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name, new { placeholder = "Student's First Name", Class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email, new { placeholder = "Student's Email", Class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.DoB)
+        @Html.TextBoxFor(m => m.DoB, new { placeholder = "Student's birthday", Class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.StudentID)
+        @Html.TextBoxFor(m => m.StudentID, new { placeholder = "Student's ID", Class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Class)
+        @Html.TextBoxFor(m => m.Class, new { placeholder = "Student's Class", Class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Major)
+        @Html.TextBoxFor(m => m.Major, new { placeholder = "Student's Major", Class = "form-control" })
+    </div>
+
+   
+
+    <input type="submit" value="Create" class="btn btn-success" />
+}

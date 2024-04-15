@@ -1,1 +1,42 @@
-[{"Id":3,"Subject":"IT","Time":"2024-04-01T00:00:00","Slot":"4","RoomNumber":"D409","Teacher":"Dinh Van Dong"},{"Id":4,"Subject":"PCP","Time":"2023-12-13T17:20:00","Slot":"4","RoomNumber":"D409","Teacher":"lancer"},{"Id":5,"Subject":"Applied Programming and Design Principles","Time":"2024-04-15T22:05:00","Slot":"3","RoomNumber":"D408","Teacher":"Do Quoc Binh"},{"Id":6,"Subject":"PP","Time":"2024-04-13T22:07:00","Slot":"4","RoomNumber":"D210","Teacher":"Dinh Mai Ha"},{"Id":7,"Subject":"SDLC","Time":"2023-11-17T22:07:00","Slot":"1","RoomNumber":"D210","Teacher":"Dinh Van Dong"}]
+[
+  {
+    "Id": 3,
+    "Subject": "IT",
+    "Time": "2024-04-01T00:00:00",
+    "Slot": "4",
+    "RoomNumber": "D409",
+    "Teacher": "Dinh Van Dong"
+  },
+  {
+    "Id": 4,
+    "Subject": "PCP",
+    "Time": "2023-12-13T17:20:00",
+    "Slot": "4",
+    "RoomNumber": "D409",
+    "Teacher": "lancer"
+  },
+  {
+    "Id": 5,
+    "Subject": "Applied Programming and Design Principles",
+    "Time": "2024-04-15T22:05:00",
+    "Slot": "3",
+    "RoomNumber": "D408",
+    "Teacher": "Do Quoc Binh"
+  },
+  {
+    "Id": 6,
+    "Subject": "PP",
+    "Time": "2024-04-13T22:07:00",
+    "Slot": "4",
+    "RoomNumber": "D210",
+    "Teacher": "Dinh Mai Ha"
+  },
+  {
+    "Id": 7,
+    "Subject": "SDLC",
+    "Time": "2023-11-17T22:07:00",
+    "Slot": "1",
+    "RoomNumber": "D210",
+    "Teacher": "Dinh Van Dong"
+  }
+]
